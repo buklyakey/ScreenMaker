@@ -1,5 +1,6 @@
 ﻿using Microsoft.Win32;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
@@ -40,13 +41,23 @@ namespace ScreenMaker
         {
             SaveFileDialog sfd = new SaveFileDialog
             {
-                Filter = "PNG-Image (.png)|*.png",
-                FileName = "Screen"
+                FileName = "Screen",
+                Filter = "PNG-Image (.png)|*.png|JPEG-Image (.jpeg)|*.jpeg|BMP-Image (.bmp)|*.bmp"
             };
 
             if (sfd.ShowDialog() ?? false)
             {
-                _img.Save(sfd.FileName, ImageFormat.Png);
+                ImageFormat selectedFormat;
+
+                switch (sfd.FilterIndex)
+                {
+                    case 0: selectedFormat = ImageFormat.Png; break;
+                    case 1: selectedFormat = ImageFormat.Jpeg; break;
+                    case 2: selectedFormat = ImageFormat.Bmp; break;
+                    default: selectedFormat = ImageFormat.Png; break;
+                }
+
+                _img.Save(sfd.FileName, selectedFormat);
             }
         }
 

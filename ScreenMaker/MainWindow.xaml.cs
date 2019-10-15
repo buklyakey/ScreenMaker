@@ -78,21 +78,15 @@ namespace ScreenMaker
                         g.CopyFromScreen(new System.Drawing.Point((int)beginCapture.X, (int)beginCapture.Y), System.Drawing.Point.Empty, new System.Drawing.Size((int)r.Width, (int)r.Height));
                     }
 
-                    SaveFileDialog sfd = new SaveFileDialog
-                    {
-                        Filter = "PNG-Image (.png)|*.png",
-                        FileName = "Screen"
-                    };
+                    SavingWindow savingWindow = new SavingWindow(bitmap);
 
-                    // Если выбран путь, сохраняем и закрываем программу
-                    // Иначе продолжается работа программы
-                    if (sfd.ShowDialog() ?? false)
+                    if (!savingWindow.ShowDialog() ?? false)
                     {
-                        bitmap.Save(sfd.FileName, ImageFormat.Png);
                         Close();
                     }
                     else
                     {
+                        grid.Children.Clear();
                         Show();
                     }
                 }

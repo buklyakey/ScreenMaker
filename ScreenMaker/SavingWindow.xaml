@@ -4,34 +4,41 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:ScreenMaker"
+        Height="auto"
+        Width="auto"
         mc:Ignorable="d"
-        Title="SavingWindow">
+        BorderBrush="White"
+        BorderThickness="1"
+        Title="ScreenMaker">
 
     <Window.Resources>
         <Style x:Key="defaultButton" TargetType="Button">
-            <Setter Property="Padding" Value="10 0"></Setter>
-            <Setter Property="Margin" Value="5"></Setter>
-            <Setter Property="FontSize" Value="15"></Setter>
             <Setter Property="Background" Value="Transparent"></Setter>
-            <Setter Property="BorderBrush" Value="DimGray"></Setter>
+            <Setter Property="BorderBrush" Value="Transparent"></Setter>
         </Style>
     </Window.Resources>
 
     <Grid>
         <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
             <RowDefinition></RowDefinition>
-            <RowDefinition Height="50"></RowDefinition>
         </Grid.RowDefinitions>
 
-        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
-            <Image x:Name="imgScreen" Grid.Row="0"></Image>
-        </ScrollViewer>
-        
-        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
-            <Button x:Name="saveToFile" Click="SaveToFile_Click" Style="{StaticResource defaultButton}">Сохранить в файл</Button>
-            <Button x:Name="saveToClipboard" Click="SaveToClipboard_Click" Style="{StaticResource defaultButton}">Копировать в буфер</Button>
-            <Button x:Name="createNewImage" Click="CreateNewImage_Click" Style="{StaticResource defaultButton}">Сделать новый скриншот</Button>
+        <StackPanel Orientation="Horizontal">
+            <Button x:Name="saveToFile" Click="SaveToFile_Click" Style="{StaticResource defaultButton}" ToolTip="Сохранить в файл">
+                <Image Source="Icons/ic_savefile.png"></Image>
+            </Button>
+            <Button x:Name="saveToClipboard" Click="SaveToClipboard_Click" Style="{StaticResource defaultButton}" ToolTip="Копировать">
+                <Image Source="Icons/ic_copy.png"></Image>
+            </Button>
+            <Button x:Name="createNewImage" Click="CreateNewImage_Click" Style="{StaticResource defaultButton}" ToolTip="Новый скриншот">
+                <Image Source="Icons/ic_new.png"></Image>
+            </Button>
         </StackPanel>
+
+        <ScrollViewer Grid.Row="1" HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Image x:Name="imgScreen"></Image>
+        </ScrollViewer>
 
     </Grid>
 </Window>

@@ -109,5 +109,14 @@
   <ItemGroup>
     <Resource Include="screenshot.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_savefile.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_copy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\ic_new.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
